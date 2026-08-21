@@ -1,4 +1,6 @@
 ﻿const string NombreComercio = "KIOSCO JULI";
+const decimal DescuentoAlto = 0.10m;
+const decimal DescuentoMedio = 0.05m;
 Console.WriteLine($"=== {NombreComercio} ===");
 Console.Write("Nombre del cajero: ");
 string nombreCajero = Console.ReadLine();
@@ -41,8 +43,24 @@ do
 
 } while (ventaAbierta);
 
-Console.WriteLine();
+decimal subtotal = total;
+decimal descuento = 0;
+
+if (subtotal > 50000)
+{
+    descuento = subtotal * DescuentoAlto;
+}
+else if (subtotal > 20000)
+{
+    descuento = subtotal * DescuentoMedio;
+}
+
+decimal totalConDescuento = subtotal - descuento;
+
 Console.WriteLine($"Productos cargados: {cantidadProductos}");
-Console.WriteLine($"Total: ${total}");
+Console.WriteLine($"Subtotal: ${subtotal}");
+Console.WriteLine($"Descuento: ${descuento}");
+Console.WriteLine($"Total con descuento: ${totalConDescuento}");
+
 
 Console.ReadLine();
