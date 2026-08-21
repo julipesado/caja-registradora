@@ -99,10 +99,34 @@ do
 
 
 Console.WriteLine();
-Console.WriteLine($"Productos cargados: {cantidadProductos}");
-Console.WriteLine($"Subtotal: ${subtotal}");
-Console.WriteLine($"Descuento: ${descuento}");
-Console.WriteLine($"Total con descuento: ${totalConDescuento}");
+for (int i = 0; i < 30; i++)
+{
+    Console.Write("-");
+}
+Console.WriteLine();
+Console.WriteLine($"       {NombreComercio}");
+for (int i = 0; i < 30; i++)
+{
+    Console.Write("-");
+}
+Console.WriteLine();
+Console.WriteLine($"Cajero: {nombreCajero}");
+Console.WriteLine($"Productos: {cantidadProductos}");
+Console.WriteLine($"Subtotal: {subtotal}");
+Console.WriteLine($"Descuento: {descuento}");
+Console.WriteLine($"Recargo: {recargo}");
+
+for (int i = 0; i < 30; i++)
+{
+    Console.Write("-");
+}
+Console.WriteLine();
+Console.WriteLine($"TOTAL: {totalConDescuento}");
+for (int i = 0; i < 30; i++)
+{
+    Console.Write("-");
+}
+Console.WriteLine();
 
 
 Console.ReadLine();
