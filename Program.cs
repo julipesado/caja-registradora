@@ -1,6 +1,8 @@
 ﻿const string NombreComercio = "KIOSCO JULI";
 const decimal DescuentoAlto = 0.10m;
 const decimal DescuentoMedio = 0.05m;
+const decimal DescuentoEfectivo = 0.10m;
+const decimal RecargoCredito = 0.15m;
 Console.WriteLine($"=== {NombreComercio} ===");
 Console.Write("Nombre del cajero: ");
 string nombreCajero = Console.ReadLine();
@@ -23,6 +25,7 @@ do
     switch (opcion)
     {
         case "1":
+            Console.WriteLine();
             Console.Write("Nombre del producto: ");
             string nombreProducto = Console.ReadLine();
             Console.Write("Precio: ");
@@ -56,7 +59,46 @@ else if (subtotal > 20000)
 }
 
 decimal totalConDescuento = subtotal - descuento;
+decimal recargo = 0;
+bool medioPagoValido = false;
+do
+{
+    Console.WriteLine();
+    Console.WriteLine("Medio de pago:");
+    Console.WriteLine("1 - Efectivo");
+    Console.WriteLine("2 - Débito");
+    Console.WriteLine("3 - Crédito");
+    Console.Write("Opción: ");
+    string medioPago = Console.ReadLine();
+    switch (medioPago)
+    {
+        case "1":
+            decimal descuentoEfectivo = totalConDescuento * DescuentoEfectivo;
+            descuento += descuentoEfectivo;
+            totalConDescuento -= descuentoEfectivo;
+            medioPagoValido = true;
+            break;
 
+        case "2":
+            medioPagoValido = true;
+            break;
+
+        case "3":
+            recargo = totalConDescuento * RecargoCredito;
+            totalConDescuento += recargo;
+            medioPagoValido = true;
+            break;
+
+        default:
+            Console.WriteLine("Opción inválida, ingresá de nuevo.");
+            break;
+    }
+
+} while (!medioPagoValido);
+
+
+
+Console.WriteLine();
 Console.WriteLine($"Productos cargados: {cantidadProductos}");
 Console.WriteLine($"Subtotal: ${subtotal}");
 Console.WriteLine($"Descuento: ${descuento}");
